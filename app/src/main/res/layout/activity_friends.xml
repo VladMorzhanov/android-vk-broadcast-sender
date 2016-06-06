@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/toolbar">
+
+        </include>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/app_bar_height">
+
+            <ListView
+                android:id="@+id/friendsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </ListView>
+        </FrameLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="@dimen/fab_margin"
+            android:background="@color/accent_color"
+            android:src="@drawable/ic_done"
+            app:backgroundTint="@color/accent_color" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_color"
+        android:id="@+id/friendsLoadProgressLayout"
+        android:orientation="vertical">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/pbFriendsNotLoaded"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="100dp"
+            android:layout_marginTop="144dp"
+            android:visibility="visible"
+            app:indicator="BallGridPulse"
+            app:indicator_color="@color/accent_color" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Please wait"
+            android:textColor="@color/accent_color"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:textSize="24sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:textColor="@color/accent_color"
+            android:layout_gravity="center_horizontal"
+            android:text="we are loading all your friends"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

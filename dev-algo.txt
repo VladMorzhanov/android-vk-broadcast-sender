@@ -1,0 +1,7 @@
+1. link VK permission activity
+
+2. create get all friends activity
+
+3. create activity with text view and button for message
+
+4. after sending you will be returned to get all friends activity
