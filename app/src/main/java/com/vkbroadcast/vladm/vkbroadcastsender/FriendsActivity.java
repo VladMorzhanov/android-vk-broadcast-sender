@@ -2,6 +2,7 @@ package com.vkbroadcast.vladm.vkbroadcastsender;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -33,6 +35,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -49,11 +52,15 @@ public class FriendsActivity extends Activity {
 
     private static ArrayList<Drawable> friendsPhotos;
 
+    private static ArrayList<String> friendsID;
+
     private LinearLayout friendsProgressLayout;
 
     private static Context friendsActivityContext;
 
     private static FriendsAdapter friendsAdapter;
+
+    private FloatingActionButton fabFriends;
 
     /**
      * application toolbar object
@@ -72,7 +79,7 @@ public class FriendsActivity extends Activity {
 
         if (toolbar != null) {
 
-            toolbar.setBackgroundColor(ContextCompat.getColor(getApplication(), R.color.main_color));
+            toolbar.setBackgroundColor(ContextCompat.getColor(getApplication(), R.color.toolbar));
 
             toolbar.setTitle("Choose friends");
 
@@ -88,7 +95,32 @@ public class FriendsActivity extends Activity {
 
         friendsPhotos = new ArrayList<>();
 
+        friendsID = new ArrayList<>();
+
         checkedFriends = new ArrayList<>();
+
+        fabFriends = (FloatingActionButton) findViewById(R.id.fab);
+
+        fabFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ArrayList<String> ids = new ArrayList<>();
+
+                for (int i = 0; i < checkedFriends.size(); ++i)
+                {
+                    if(!checkedFriends.get(i))
+                        continue;
+                    else
+                        ids.add(friendsID.get(i));
+                }
+
+                Intent intent = new Intent(FriendsActivity.this, MessageActivity.class);
+                intent.putExtra("vk_ids", ids);
+
+                startActivity(intent);
+            }
+        });
 
         /**
          * get all friends data from json object
@@ -120,12 +152,15 @@ public class FriendsActivity extends Activity {
                 String fname = res.getJSONObject(i).getString("first_name");
                 String lname = res.getJSONObject(i).getString("last_name");
                 String photo_url = res.getJSONObject(i).getString("photo_50");
+                String id = res.getJSONObject(i).getString("id");
 
                 friendsNames.add(fname + " " + lname);
 
                 friendsPhotoUrls.add(photo_url);
 
                 checkedFriends.add(false);
+
+                friendsID.add(id);
 
             } catch (JSONException e) {
                 e.printStackTrace();

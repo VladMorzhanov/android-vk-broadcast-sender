@@ -5,5 +5,6 @@
     <color name="accent_color">#ff9500</color>
     <color name="window_background">#FFF5F5F5</color>
     <color name="checked_friend_item">#FFCEA7CF</color>
+    <color name="toolbar">#FF860089</color>
 
 </resources>

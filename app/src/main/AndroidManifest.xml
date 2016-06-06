@@ -32,6 +32,10 @@
         <activity
             android:name=".FriendsActivity"
             android:label="@string/title_activity_friends"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MessageActivity"
+            android:label="@string/title_activity_message"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
