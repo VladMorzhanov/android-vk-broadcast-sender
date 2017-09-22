@@ -1,3 +1,3 @@
 # android-vk-broadcast-sender
 
-Android application that retrieves User friesnd data.
+Android application that retrieves vk.com User friends data.
