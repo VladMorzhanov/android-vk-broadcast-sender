@@ -1,5 +1,7 @@
 # Android VK sender
 
+<img src="https://i.imgur.com/LJPidj8.png"/>
+
 This application allows you to send messages to multiple users. (application not supported and not updated from 2015 year and requires to be updated).
 
 ## Installation
@@ -16,11 +18,11 @@ In this app you can:
 3. Send messages to multiple friends simultaneously.
 
 ## Main Technologies
-* Android SDK
-* Java
-* HTTP
-* VK API
-* XML
+- <a href="https://developer.android.com/studio/">Android SDK</a>
+- <a href="https://www.java.com/en/download/">Java</a>
+- <a href="https://developer.mozilla.org/kab/docs/Web/HTTP">HTTP</a>
+- <a href="https://vk.com/dev/openapi">VK API</a>
+- <a href="https://developer.mozilla.org/en-US/docs/XML_introduction">XML</a>
 
 ## Contributing
 
